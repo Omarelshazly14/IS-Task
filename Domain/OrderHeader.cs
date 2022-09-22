@@ -20,6 +20,7 @@ namespace Domain
         public DateTime Date { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
+        [Display(Name = "Total Cost")]
         public decimal TotalCost { get; set; }
 
 

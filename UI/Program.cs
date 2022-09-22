@@ -1,23 +1,24 @@
-using Business;
+using Application;
 using Domain;
 using Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using UI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<Infrastructure.DbContext>(options =>
+builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddScoped<IRepository<OrderHeader>, Repository<OrderHeader>>();
-builder.Services.AddScoped<IOrderHeaderRepo, OrderHeaderRepo>();
+builder.Services.AddScoped<IOrderHeaderRepo, OrderHeaderRepository>();
+builder.Services.AddScoped<IOrderHeaderApplication, OrderHeaderApplication>();
+builder.Services.AddScoped<IOrderDetailsApplication, OrderDetailsApplication>();
+builder.Services.AddScoped<IOrderDetailsRepo, OrderDetailsRepository>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<Infrastructure.DbContext>();
+    .AddEntityFrameworkStores<Context>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

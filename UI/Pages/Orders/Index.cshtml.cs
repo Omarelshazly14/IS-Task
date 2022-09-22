@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure;
 
 namespace UI.Pages.Orders
 {
     public class IndexModel : PageModel
     {
-        private readonly Infrastructure.DbContext _context;
+        private readonly Context _context;
 
-        public IndexModel(Infrastructure.DbContext context)
+        public IndexModel(Context context)
         {
             _context = context;
         }
@@ -24,7 +25,7 @@ namespace UI.Pages.Orders
         {
             if (_context.Orders != null)
             {
-                List<OrderHeader> orders = await _context.Orders.ToListAsync();
+                OrderHeader = await _context.Orders.ToListAsync();
             }
         }
     }

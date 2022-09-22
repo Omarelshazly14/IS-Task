@@ -1,31 +1,27 @@
 ﻿using Domain;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    public class DbContext : IdentityDbContext
+    public class Context : DbContext
     {
-        public DbContext(DbContextOptions<DbContext> options): base(options)
+        public Context(DbContextOptions<Context> options):base(options)
         {
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Write Fluent API configurations here
-
-            //Property Configurations
-            modelBuilder.Entity<HijriCalendar>(h=>h.HasNoKey());
+            modelBuilder.ApplyConfiguration(new OrderHeaderMapping());
+            modelBuilder.ApplyConfiguration(new OrderDetailsMapping());
+            base.OnModelCreating(modelBuilder);
         }
         public virtual DbSet<OrderHeader> Orders { get; set; }
         public virtual DbSet<OrderDetails> OrderDetails { get; set; }
-        public DbSet<ApplicationUser> ApplicationUser { get; set; }
-
     }
 }

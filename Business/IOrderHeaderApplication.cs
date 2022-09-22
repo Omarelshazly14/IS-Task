@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Application
 {
-    public class BaseEntity
+    public interface IOrderHeaderApplication
     {
-        public int Id { get; set; }
+        List<OrderHeaderVM> Search(string name);
     }
 }

@@ -7,15 +7,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Domain;
 using Microsoft.EntityFrameworkCore;
-
+using Infrastructure;
 
 namespace UI.Pages.Orders
 {
     public class CreateModel : PageModel
     {
-        private readonly Infrastructure.DbContext _context;
+        private readonly Context _context;
 
-        public CreateModel(Infrastructure.DbContext context)
+        public CreateModel(Context context)
         {
             _context = context;
         }

@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure;
 
 namespace UI.Pages.Orders
 {
     public class EditModel : PageModel
     {
-        private readonly Infrastructure.DbContext _context;
+        private readonly Context _context;
 
-        public EditModel(Infrastructure.DbContext context)
+        public EditModel(Context context)
         {
             _context = context;
         }

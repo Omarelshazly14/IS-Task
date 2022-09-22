@@ -12,9 +12,9 @@ namespace UI.Pages.Orders
 {
     public class DetailsModel : PageModel
     {
-        private readonly Infrastructure.DbContext _context;
+        private readonly Context _context;
 
-        public DetailsModel(Infrastructure.DbContext context)
+        public DetailsModel(Context context)
         {
             _context = context;
         }

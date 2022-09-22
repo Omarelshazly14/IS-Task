@@ -5,11 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business
+namespace Application
 {
     public interface IOrderHeaderRepo
     {
-        IEnumerable<OrderHeader> GetAll();
         OrderHeader GetById(int Id);
+        List<OrderHeaderVM> Search(string name);
+        //EditOrderHeader GetDetails(int id);
+
+        //void Create(OrderHeader order);
+        void SaveChanges();
+
+        bool Exists(int num);
     }
 }

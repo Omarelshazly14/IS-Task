@@ -13,9 +13,9 @@ namespace UI.Pages.Orders
 {
     public class DeleteModel : PageModel
     {
-        private readonly Infrastructure.DbContext _context;
+        private readonly Context _context;
 
-        public DeleteModel(Infrastructure.DbContext context)
+        public DeleteModel(Context context)
         {
             _context = context;
         }

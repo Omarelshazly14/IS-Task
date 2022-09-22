@@ -18,10 +18,12 @@ builder.Services.AddScoped<IOrderDetailsRepo, OrderDetailsRepository>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
-builder.Services.AddRazorPages(options =>
-{
-    options.Conventions.AuthorizeFolder("/Orders");
-});
+builder.Services.AddRazorPages(
+//    options =>
+//{
+//    options.Conventions.AuthorizeFolder("/Orders");
+//}
+);
 
 var app = builder.Build();
 
